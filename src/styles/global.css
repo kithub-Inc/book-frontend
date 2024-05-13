@@ -1,0 +1,753 @@
+@font-face {
+    font-family: "Pretendard Black";
+    src: url("../fonts/Pretendard-Black.otf");
+}
+
+@font-face {
+    font-family: "Pretendard Bold";
+    src: url("../fonts/Pretendard-Bold.otf");
+}
+
+@font-face {
+    font-family: "Pretendard ExtraBold";
+    src: url("../fonts/Pretendard-ExtraBold.otf");
+}
+
+@font-face {
+    font-family: "Pretendard ExtraLight";
+    src: url("../fonts/Pretendard-ExtraLight.otf");
+}
+
+@font-face {
+    font-family: "Pretendard Light";
+    src: url("../fonts/Pretendard-Light.otf");
+}
+
+@font-face {
+    font-family: "Pretendard Medium";
+    src: url("../fonts/Pretendard-Medium.otf");
+}
+
+@font-face {
+    font-family: "Pretendard Regular";
+    src: url("../fonts/Pretendard-Regular.otf");
+}
+
+@font-face {
+    font-family: "Pretendard SemiBold";
+    src: url("../fonts/Pretendard-SemiBold.otf");
+}
+
+@font-face {
+    font-family: "Pretendard Thin";
+    src: url("../fonts/Pretendard-Thin.otf");
+}
+
+@font-face {
+    font-family: "MaruBuri Light";
+    src: url("../fonts/MaruBuri-Light.otf");
+}
+
+
+body {
+    scroll-behavior: smooth;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Pretendard Regular";
+}
+
+
+:root {
+    --primary: #1a60d0;
+    --secondary: #454595;
+    --error: #ca1717;
+    --gray: #686868;
+    --gray2: #c7c7c7;
+}
+
+
+.container {
+    margin: 0 auto;
+    max-width: 1280px;
+}
+
+
+.header {
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+    height: 100px;
+    top: 0;
+    left: 0;
+    background: white;
+}
+
+.header .container {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header .container .header-items {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.header .container .header-items .header-item {
+    margin-right: 50px;
+}
+
+.header .container .header-items .header-item a {
+    color: black;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.header .container .header-items:last-child .header-item {
+    margin-right: 25px;
+}
+
+.header .container .header-items:last-child .header-item:last-child a {
+    border: 1px solid black;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+.header .container .header-items .header-item:last-child {
+    margin-right: 0;
+}
+
+
+.footer {
+    width: 100%;
+}
+
+.footer .container {
+    padding: 40px 0;
+}
+
+.footer .container .footer-text {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.footer .container .footer-text:last-child {
+    margin-bottom: 0;
+}
+
+
+.visual {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.visual .visual-title {
+    font-size: 72px;
+    font-family: "Pretendard Bold";
+}
+
+.visual .visual-title2 {
+    margin-top: 5px;
+    font-size: 18px;
+}
+
+.visual .visual-title3 {
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+.visual .visual-buttons {
+    margin-top: 25px;
+    display: flex;
+}
+
+
+.global-button {
+    margin-right: 10px;
+    padding: 10px 15px;
+    border: 1px solid black;
+    background: whitesmoke;
+    font-size: 14px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    transition: .1s;
+}
+
+.global-button.mini {
+    padding: 5px 10px;
+    font-size: 12px;
+}
+
+.global-button.active {
+    background: var(--primary);
+    color: white;
+    border-color: #134597;
+}
+
+.global-button:hover {
+    filter: brightness(1.05);
+}
+
+.global-button:active {
+    filter: brightness(0.95);
+}
+
+.global-button:last-child {
+    margin-right: 0;
+}
+
+.global-button svg {
+    width: 12.5px;
+    height: 12.5px;
+    fill: black;
+    margin-right: 5px;
+}
+
+.global-button.mini svg {
+    width: 10px;
+    height: 10px;
+}
+
+.global-button.active svg {
+    fill: white;
+}
+
+.global-button-warning {
+    background: var(--error);
+    color: white;
+}
+
+.global-button-warning svg {
+    fill: white;
+}
+
+
+.global-input {
+    padding: 10px 15px;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-top: 5px;
+    width: 100%;
+    outline: none;
+    font-size: 14px;
+}
+
+@keyframes global-err {
+    0% { transform: translate(-1px, -1px); }
+    20% { transform: translate(1px, 2px); }
+    40% { transform: translate(-2px, 0px); }
+    60% { transform: translate(0px, 3px); }
+    80% { transform: translate(-1px, -2px); }
+    100% { transform: translate(0px, 0px); }
+}
+
+.global-input.err {
+    border-color: var(--error);
+    color: var(--error);
+    animation: global-err .1s both;
+}
+
+.global-input.mini {
+    font-size: 14px;
+    padding: 5px 10px;
+    resize: vertical;
+}
+
+.global-input.mini2 {
+    width: 75px;
+}
+
+.global-input-white {
+    border: 0;
+    border-bottom: 1px solid white;
+    border-radius: 0;
+    margin-top: 0;
+    color: white;
+    background: none;
+}
+
+.global-input-white::placeholder {
+    color: white;
+}
+
+.global-input-black {
+    border: 0;
+    border-bottom: 1px solid black;
+    border-radius: 0;
+    margin-top: 0;
+    color: black;
+    background: none;
+}
+
+.global-input-black::placeholder {
+    color: black;
+}
+
+
+@keyframes loader-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.global-loader svg {
+    width: 10px;
+    height: 10px;
+    fill: black;
+    animation: loader-spin 1s infinite linear;
+}
+
+
+.oauth-wrap {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.oauth-wrap .oauth-form {
+    width: 250px;
+}
+
+.oauth-wrap .oauth-form .oauth-group {
+    margin-bottom: 20px;
+}
+
+.oauth-wrap .oauth-form .oauth-group:last-child {
+    margin-bottom: 0;
+}
+
+.oauth-wrap .oauth-form .oauth-group .oauth-text {
+    font-size: 14px;
+}
+
+.oauth-wrap .oauth-form .oauth-group .oauth-text.err {
+    color: var(--error);
+    animation: global-input-err .1s both;
+}
+
+.oauth-wrap .oauth-form .oauth-errtext {
+    color: var(--error);
+    font-size: 14px;
+    margin: 10px 0;
+}
+
+.oauth-wrap .oauth-form .oauth-submit {
+    width: 100%;
+    justify-content: center;
+}
+
+
+.books {
+    padding: 150px 0;
+}
+
+.books .books-subtitle {
+    font-size: 14px;
+}
+
+.books .books-title {
+    font-family: "Pretendard Bold";
+    font-size: 32px;
+}
+
+.books .books-items {
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.books .books-items .books-item {
+    cursor: default;
+    width: 250px;
+    height: 200px;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    transition: .1s;
+}
+
+.books .books-items .books-item .books-preview {
+    width: 100%;
+    height: 125px;
+    padding: 20px;
+}
+
+.books .books-items .books-item .books-content {
+    border-top: 1px solid var(--gray);
+    width: 100%;
+    height: 75px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.books .books-items .books-item .books-name {
+    font-size: 16px;
+}
+
+.books .books-items .books-item .books-author {
+    font-size: 14px;
+    color: var(--gray);
+}
+
+.books .books-items .books-item .books-subitem .books-sub-tags {
+    font-size: 12px;
+    color: var(--gray);
+}
+
+.books .books-items .books-item .books-subitem .books-sub-flex {
+    margin-top: 5px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.books .books-items .books-item .books-subitem .books-sub-flex2 {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.books .books-items .books-item .books-subitem .books-sub-created_at {
+    font-size: 14px;
+    margin-right: 5px;
+}
+
+.books .books-items .books-item .books-subitem .books-sub-author {
+    font-size: 14px;
+}
+
+.books .books-items .books-item .books-subitem .books-sub-difficulty {
+    display: flex;
+    align-items: center;
+}
+
+.books .books-items .books-item .books-subitem .books-sub-difficulty svg {
+    width: 10px;
+    height: 10px;
+    margin-left: 2.5px;
+}
+
+.books .books-items .books-item .books-subitem .books-sub-title {
+    margin-top: 5px;
+    font-size: 16px;
+}
+
+.books .books-items .books-item .books-subitem .books-sub-content {
+    margin-top: 5px;
+    font-size: 12px;
+}
+
+
+.book-editor {
+    padding: 150px 0;
+}
+
+.book-editor .container {
+    width: calc(100% / 1.5);
+}
+
+.book-editor .book-editor-name {
+    margin-top: 5px;
+    font-size: 24px;
+    font-family: "Pretendard Bold";
+}
+
+.book-editor .book-editor-author {
+    font-size: 14px;
+    color: var(--gray);
+}
+
+.book-editor .book-editor-flex {
+    margin-top: 25px;
+    display: flex;
+    align-items: center;
+}
+
+.book-editor .book-editor-flex > * {
+    margin-right: 5px;
+}
+
+.book-editor .book-editor-flex > *:first-child {
+    margin-right: 10px;
+}
+
+.book-editor .editor {
+    margin-top: 100px;
+}
+
+.book-editor .editor .editor-item {
+    width: 100%;
+    display: flex;
+    margin-bottom: 50px;
+}
+
+.book-editor .editor .editor-item canvas {
+    margin-top: 26px;
+    border: 2px solid black;
+    padding: 5px;
+    transform-origin: top right;
+    transform: scale(.75);
+}
+
+.book-editor .editor .editor-item > div:first-child {
+    width: 100%;
+    display: flex;
+}
+
+.book-editor .editor .editor-item .editor-wrap {
+    width: 100%;
+    margin-left: 20px;
+}
+
+.book-editor .editor .editor-item .editor-image-wrap {
+    margin-top: 26px;
+    width: 200px;
+    height: 300px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    background: whitesmoke;
+}
+
+.book-editor .editor .editor-item .editor-image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.book-editor .editor .editor-item .editor-links {
+    margin-top: 20px;
+    border-radius: 15px;
+    background: #f3d2ca;
+    padding: 15px;
+}
+
+.book-editor .editor .editor-item .editor-links .editor-links-title {
+    font-size: 16px;
+    font-family: "Pretendard Bold";
+    color: var(--secondary);
+    text-align: right;
+}
+
+.book-editor .editor .editor-item .editor-links .editor-link {
+    margin-top: 10px;
+}
+
+.book-editor .editor .editor-item .editor-links .editor-link .editor-link-bookname {
+    display: inline-block;
+    background: var(--secondary);
+    color: white;
+    padding: 5px;
+    font-size: 12px;
+}
+
+.book-editor .editor .editor-item .editor-links .editor-link .editor-link-content {
+    margin-top: 5px;
+    font-size: 12px;
+}
+
+.book-editor .editor .editor-item .editor-flex2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.book-editor .editor .editor-item .editor-type {
+    font-size: 14px;
+    font-family: "Pretendard SemiBold";
+}
+
+.book-editor .editor .editor-item .editor-tags {
+    font-size: 14px;
+    color: var(--secondary);
+    font-family: "Pretendard SemiBold";
+}
+
+.book-editor .editor .editor-item .editor-line {
+    margin: 10px 0 20px 0;
+    width: 100%;
+    height: 1px;
+    background: black;
+}
+
+.book-editor .editor .editor-item .editor-flex3 {
+    display: flex;
+    justify-content: space-between;
+}
+
+.book-editor .editor .editor-item .editor-difficulty {
+    display: flex;
+    align-items: center;
+}
+
+.book-editor .editor .editor-item .editor-difficulty span {
+    margin-right: 5px;
+    font-size: 14px;
+}
+
+.book-editor .editor .editor-item .editor-difficulty svg {
+    width: 12.5px;
+    height: 12.5px;
+    margin-left: 2.5px;
+}
+
+.book-editor .editor .editor-item .editor-qrcode-content {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.book-editor .editor .editor-item .editor-title {
+    font-size: 24px;
+    font-family: "Pretendard Bold";
+}
+
+.book-editor .editor .editor-item .editor-flex {
+    margin: 10px 0 20px 0;
+    display: flex;
+    align-items: center;
+}
+
+.book-editor .editor .editor-item .editor-flex > * {
+    font-size: 14px;
+    color: var(--gray);
+    display: flex;
+    align-items: center;
+}
+
+.book-editor .editor .editor-item .editor-flex > *::after {
+    display: block;
+    content: '|';
+    margin: 0 10px;
+}
+
+.book-editor .editor .editor-item .editor-flex > *:last-child:after {
+    display: none;
+}
+
+.book-editor .editor .editor-item .editor-subcontent {
+    font-size: 16px;
+    font-family: "Pretendard SemiBold";
+    white-space: pre-wrap;
+    display: flex;
+    align-items: center;
+    color: var(--secondary);
+}
+
+.book-editor .editor .editor-item .editor-subcontent svg {
+    width: 12.5px;
+    height: 12.5px;
+    margin-right: 5px;
+    fill: var(--secondary);
+}
+
+.book-editor .editor .editor-item .editor-content {
+    margin-top: 25px;
+    font-size: 16px;
+    white-space: pre-wrap;
+    font-family: "MaruBuri Light";
+    line-height: 30px;
+}
+
+.book-editor .editor .editor-item .editor-index {
+    margin-top: 20px;
+    display: flex;
+}
+
+.book-editor .editor .editor-item .editor-index .editor-index-left {
+    background: var(--gray2);
+    padding: 10px;
+}
+
+.book-editor .editor .editor-item .editor-index .editor-index-left .editor-index-left-title {
+    font-size: 14px;
+}
+
+.book-editor .editor .editor-item .editor-index .editor-index-content {
+    margin-left: 25px;
+    font-size: 14px;
+    white-space: pre-wrap;
+}
+
+
+.links {
+    padding: 150px 0;
+}
+
+.links .container {
+    width: calc(100% / 1.5);
+}
+
+.links .links-subtitle {
+    font-size: 14px;
+}
+
+.links .links-title {
+    font-family: "Pretendard Bold";
+    font-size: 32px;
+}
+
+.links .links-items {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.links .links-items .links-item {
+    margin-top: 50px;
+    margin-right: 50px;
+}
+
+.links .links-items .links-item .links-bookname {
+    display: inline-block;
+    background: var(--secondary);
+    color: white;
+    padding: 5px;
+    font-size: 12px;
+}
+
+.links .links-items .links-item .links-content {
+    margin-top: 5px;
+    font-size: 12px;
+}
+
+.links .links-items .links-item .links-flex {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.links .links-items .links-item .links-author {
+    font-size: 12px;
+    color: var(--gray);
+    display: flex;
+    align-items: center;
+}
+
+.links .links-items .links-item .links-author::after {
+    content: '·';
+    margin: 0 5px;
+}
+
+.links .links-items .links-item .links-name {
+    font-size: 12px;
+    color: var(--gray);
+}
